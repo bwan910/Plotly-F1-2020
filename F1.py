@@ -43,16 +43,8 @@ app.layout = dbc.Container([
                     href="https://www.formula1.com/en.html",
                     target="_blank"
 
-                    # href="#my-dpdn2",
 
                 ),
-                # dbc.Nav([
-                #         dbc.NavItem(dbc.NavLink(
-                #                     "Constructors", href="", className='')),
-                #         dbc.NavItem(dbc.NavLink(
-                #                     "Driver", href="#my-dpdn2", className=''))
-
-                #         ]),
 
             ]
         ),
@@ -219,9 +211,12 @@ app.layout = dbc.Container([
 
 # Line chart - Single
 @ app.callback(
-    Output('line-fig', 'figure'),
-    Input('my-dpdn', 'value')
+    dash.dependencies.Output('line-fig', 'figure'),
+    [dash.dependencies. Input('my-dpdn', 'value')]
 )
+    #Output('line-fig', 'figure'),
+    #Input('my-dpdn', 'value')
+
 def update_graph(team_slctd):
     dff = df[df['Team'] == team_slctd]
     # figln = px.line(dff, x='Year', y='Position')
@@ -231,8 +226,10 @@ def update_graph(team_slctd):
 
 # Line chart - multiple
 @ app.callback(
-    Output('line-fig2', 'figure'),
-    Input('my-dpdn2', 'value')
+    dash.dependencies.Output('line-fig2', 'figure'),
+    [dash.dependencies. Input('my-dpdn2', 'value')]
+    #Output('line-fig2', 'figure'),
+    #Input('my-dpdn2', 'value')
 )
 def update_graph(team_slctd):
     dff = df[df['Team'].isin(team_slctd)]
@@ -242,8 +239,10 @@ def update_graph(team_slctd):
 
 # Line graph - drivers
 @ app.callback(
-    Output('line-fig3', 'figure'),
-    Input('my-dpdn3', 'value')
+    dash.dependencies.Output('line-fig3', 'figure'),
+    [dash.dependencies. Input('my-dpdn3', 'value')]
+    #Output('line-fig3', 'figure'),
+    #Input('my-dpdn3', 'value')
 )
 def update_graph(driver_slctd):
     dff = df2[df2['Name'].isin([driver_slctd])]
