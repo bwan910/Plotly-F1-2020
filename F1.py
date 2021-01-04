@@ -188,24 +188,6 @@ app.layout = dbc.Container([
     html.Br(),
         html.Br(),
         html.Br(),
-
-#     dbc.Row([
-#         dbc.Card(
-#             [
-#                 # dbc.CardHeader("This is the header"),
-#                 # dbc.CardBody(
-#                 #     [
-#                 #         html.H4("Card title", className="card-title"),
-#                 #         html.P("This is some card text",
-#                 #                className="card-text"),
-#                 #     ]
-#                 # ),
-#                 dbc.CardFooter("This is the footer"),
-#             ],
-#            # style={"width": "18rem"},
-#         )
-#     ])
-
 ])
 
 
@@ -214,12 +196,10 @@ app.layout = dbc.Container([
     dash.dependencies.Output('line-fig', 'figure'),
     [dash.dependencies. Input('my-dpdn', 'value')]
 )
-    #Output('line-fig', 'figure'),
-    #Input('my-dpdn', 'value')
+  
 
 def update_graph(team_slctd):
     dff = df[df['Team'] == team_slctd]
-    # figln = px.line(dff, x='Year', y='Position')
     figln = px.bar(dff, x="Year", y="Position", color="Team", barmode="group")
     return figln
 
@@ -228,8 +208,7 @@ def update_graph(team_slctd):
 @ app.callback(
     dash.dependencies.Output('line-fig2', 'figure'),
     [dash.dependencies. Input('my-dpdn2', 'value')]
-    #Output('line-fig2', 'figure'),
-    #Input('my-dpdn2', 'value')
+
 )
 def update_graph(team_slctd):
     dff = df[df['Team'].isin(team_slctd)]
@@ -241,8 +220,6 @@ def update_graph(team_slctd):
 @ app.callback(
     dash.dependencies.Output('line-fig3', 'figure'),
     [dash.dependencies. Input('my-dpdn3', 'value')]
-    #Output('line-fig3', 'figure'),
-    #Input('my-dpdn3', 'value')
 )
 def update_graph(driver_slctd):
     dff = df2[df2['Name'].isin([driver_slctd])]
